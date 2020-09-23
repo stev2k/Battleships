@@ -1,3 +1,5 @@
+![Battleships game](/capture.png)
+
 To run the Battleships program, you simply run Battleships.exe.
 
 you then will have options under the File menu for new game, save game and load game or quit.
