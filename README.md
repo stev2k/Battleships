@@ -1,4 +1,4 @@
-<img src="Capture.PNG" align="left" height="30%" width="30%" ></a>
+<img src="Capture.PNG" align="right" height="30%" width="30%" ></a>
 
 Battleships is a JavaFX implementation of the old school board game by the same name.  
 
@@ -10,13 +10,14 @@ Battleships is a JavaFX implementation of the old school board game by the same 
 •	Saving and Loading system with filepickers<BR>
 •	Click to shoot (based on corresponding mouse location)<BR>
 •	Basic score keeping<BR>
+<BR>
 
 <H2>Todo:</H2>
 
 •	Win condition<BR>
 •	Choose your own ship locations<BR>
 •	Play over a network<BR>
-
+<BR>
 <H2>How to Use:</H2>
 
 To run the Battleships program, you simply run Battleships.exe.
