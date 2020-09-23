@@ -1,4 +1,4 @@
-![Battleships game](capture.png)
+<img src="Capture.PNG" align="left" height="30%" width="30%" ></a>
 
 To run the Battleships program, you simply run Battleships.exe.
 
