@@ -194,7 +194,7 @@ public class Game {
 					// System.out.println("test placing ship at" + i);
 				} else {
 
-					placeShipPart(grid, i, constructParams(isPlayer, false, ship.size));
+					placeShipPart(grid, i, constructParams(isPlayer, false, ship.size,i));
 					// System.out.println("placing ship at" + i);
 				}
 				if (boolArray.contains(true)) {
@@ -208,7 +208,7 @@ public class Game {
 					boolArray = test(ship, grid, boolArray, i);
 					// System.out.println("test placing ship at" + i);
 				} else {
-					placeShipPart(grid, i, constructParams(isPlayer, false, ship.size));
+					placeShipPart(grid, i, constructParams(isPlayer, false, ship.size,i));
 					// System.out.println("placing ship at" + i);
 				}
 				if (boolArray.contains(true)) {
@@ -219,9 +219,11 @@ public class Game {
 		// System.out.println("------------------------");
 	}
 
-	private Integer[] constructParams(Boolean isPlayer, Boolean isUpdate, Integer shipSize) {
+	private Integer[] constructParams(Boolean isPlayer, Boolean isUpdate, Integer shipSize, Integer i) {
 		Integer[] params = new Integer[9];
 		params[0] = boolToInt(isPlayer);
+		params[1] = indexToCoordinate(i,true);//x
+		params[2] = indexToCoordinate(i,false);//y
 		params[7] = shipSize;
 		params[8] = boolToInt(isUpdate);
 		return params;
@@ -279,10 +281,11 @@ public class Game {
 	 *             isUpdate
 	 * @return none
 	 */
-	private void placeShipPart(Grid grid, int i, Integer[] params) {
+	private void placeShipPart(Grid grid, Integer[] params) {
+		int i = coordinateToIndex(params[1],params[2]);
 		GridObject gridObj = grid.getGridInfoByIndex(i);
-		gridObj.x = indexToCoordinate(i, true);
-		gridObj.y = indexToCoordinate(i, false);
+		gridObj.x = params[1];
+		gridObj.y = params[2];
 
 		if (!(params[8] == null)) {
 			if (gridObj.isShip && intToBool(params[8])) {
@@ -313,7 +316,6 @@ public class Game {
 		}
 		gridObj.gridImg = grid.prepImageView(gridObj.y, gridObj.x, new ImageView(grid.imageArray.get(gridObj.imageId)));
 		grid.updateGridByIndex(i, gridObj);
-		// System.out.println("coordinates: " +gridObj.x + gridObj.y + " :: "+ i);
 	}
 
 	/**
@@ -324,7 +326,7 @@ public class Game {
 	 * @return none
 	 */
 	public void fireShot(int i, boolean isPlayer) {
-		placeShipPart(isPlayer ? playerGrid : opponentGrid, i, constructParams(isPlayer, true, null));
+		placeShipPart(isPlayer ? playerGrid : opponentGrid, constructParams(isPlayer, true, null,i));
 		updateLabels();
 	}
 
